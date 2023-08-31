@@ -13,8 +13,8 @@ public class CarbonFuelCar extends Car {
     private String fuelType = "petrol";
     private int engineSize = 800;
 
-    public CarbonFuelCar(Manufacturer manufacturer, int year, float cost, String regNumber, String model, int secs0To60, int power, float torque, int topSpeed, float fuelConsumption, float carbonEmission, boolean automatic, String fuelType, int engineSize) {
-        super(manufacturer, year, cost, regNumber, model, secs0To60, power, torque, topSpeed);
+    public CarbonFuelCar(Manufacturer manufacturer, String vehicleTax, int year, float cost, String regNumber, String model, int secs0To60, int power, float torque, int topSpeed, float fuelConsumption, float carbonEmission, boolean automatic, String fuelType, int engineSize) {
+        super(manufacturer, vehicleTax, year, cost, regNumber, model, secs0To60, power, torque, topSpeed);
         this.fuelConsumption = fuelConsumption;
         this.carbonEmission = carbonEmission;
         this.automatic = automatic;

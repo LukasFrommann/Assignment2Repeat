@@ -8,8 +8,8 @@ public class ElectricCar extends Car {
     private int range = 100;
     private float engineKWatts = 40;
 
-    public ElectricCar(Manufacturer manufacturer, int year, float cost, String regNumber, String model, int secs0To60, int power, float torque, int topSpeed, int range, float engineKWatts) {
-        super(manufacturer, year, cost, regNumber, model, secs0To60, power, torque, topSpeed);
+    public ElectricCar(Manufacturer manufacturer, String vehicleTax, int year, float cost, String regNumber, String model, int secs0To60, int power, float torque, int topSpeed, int range, float engineKWatts) {
+        super(manufacturer, vehicleTax, year, cost, regNumber, model, secs0To60, power, torque, topSpeed);
         this.range = range;
         this.engineKWatts = engineKWatts;
     }

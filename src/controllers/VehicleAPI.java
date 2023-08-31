@@ -36,22 +36,63 @@ public class VehicleAPI implements Serializer { // todo implements Serializer { 
         return vehicles.add(vehicle);
     }
 
-    public boolean updateVehicle(int indexToUpdate, Vehicle updateDetails) {
-        //find the vehicle object by the index number.
+    //------______ Update methods _______-------
+    public boolean upDateElectricCar(int indexToUpdate, ElectricCar updatedDetails) {
         Vehicle foundVehicle = findVehicle(indexToUpdate);
-        //if the vehicle exists, use the details passed in the updateDetails parameter to
-        //update the found product in the arraylist
-        if (foundVehicle != null) {
-            foundVehicle.setManufacturer(updateDetails.getManufacturer());
-            foundVehicle.setYear(updateDetails.getYear());
-            foundVehicle.setCost(updateDetails.getCost());
-            foundVehicle.setModel(updateDetails.getModel());
-            foundVehicle.setRegNumber(updateDetails.getRegNumber());
+        if (foundVehicle instanceof ElectricCar) {
+            foundVehicle.setCost(updatedDetails.getCost());
+            foundVehicle.setModel(updatedDetails.getModel());
+            foundVehicle.setManufacturer(updatedDetails.getManufacturer());
+            foundVehicle.setYear(updatedDetails.getYear());
+            ((ElectricCar)foundVehicle).setPower(updatedDetails.getPower());
+            ((ElectricCar)foundVehicle).setSecs0To60(updatedDetails.getSecs0To60());
+            ((ElectricCar)foundVehicle).setTopSpeed(updatedDetails.getTopSpeed());
+            ((ElectricCar)foundVehicle).setTorque(updatedDetails.getTorque());
+            ((ElectricCar)foundVehicle).setEngineKWatts(updatedDetails.getEngineKWatts());
+            ((ElectricCar)foundVehicle).setRange(updatedDetails.getRange());
             return true;
+        } else {
+            return false;
         }
-        //if the product was not found, return false, indicating that the update was not successful
-        return false;
     }
+
+    public boolean upDateCarbonFuelCar(int indexToUpdate, CarbonFuelCar updatedDetails) {
+        Vehicle foundVehicle = findVehicle(indexToUpdate);
+        if (foundVehicle instanceof CarbonFuelCar) {
+            foundVehicle.setCost(updatedDetails.getCost());
+            foundVehicle.setModel(updatedDetails.getModel());
+            foundVehicle.setManufacturer(updatedDetails.getManufacturer());
+            foundVehicle.setYear(updatedDetails.getYear());
+            ((CarbonFuelCar)foundVehicle).setPower(updatedDetails.getPower());
+            ((CarbonFuelCar)foundVehicle).setSecs0To60(updatedDetails.getSecs0To60());
+            ((CarbonFuelCar)foundVehicle).setTopSpeed(updatedDetails.getTopSpeed());
+            ((CarbonFuelCar)foundVehicle).setTorque(updatedDetails.getTorque());
+            ((CarbonFuelCar)foundVehicle).setCarbonEmission(updatedDetails.getCarbonEmission());
+            ((CarbonFuelCar)foundVehicle).setFuelConsumption(updatedDetails.getFuelConsumption());
+            ((CarbonFuelCar)foundVehicle).setFuelType(updatedDetails.getFuelType());
+            ((CarbonFuelCar)foundVehicle).setAutomatic(updatedDetails.isAutomatic());
+            ((CarbonFuelCar)foundVehicle).setEngineSize(updatedDetails.getEngineSize());
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean upDateScooter(int indexToUpdate, Scooter updatedDetails) {
+        Vehicle foundVehicle = findVehicle(indexToUpdate);
+        if (foundVehicle instanceof Scooter) {
+            foundVehicle.setCost(updatedDetails.getCost());
+            foundVehicle.setModel(updatedDetails.getModel());
+            foundVehicle.setManufacturer(updatedDetails.getManufacturer());
+            foundVehicle.setYear(updatedDetails.getYear());
+            ((Scooter)foundVehicle).setPower(updatedDetails.getPower());
+            ((Scooter)foundVehicle).setWeight(updatedDetails.getWeight());
+            ((Scooter)foundVehicle).setTopRiderWeight(updatedDetails.getTopRiderWeight());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public Vehicle deleteVehicle(int indexToDelete) {
         if (isValidIndex(indexToDelete)) {
             return vehicles.remove(indexToDelete);
@@ -79,7 +120,7 @@ public class VehicleAPI implements Serializer { // todo implements Serializer { 
             return matchingVehicles;
         }
     }
-    //other methods
+    //------______ other methods _______-------
     public int numberOfVehicles(){
         return vehicles.size();
     }
@@ -196,7 +237,7 @@ public class VehicleAPI implements Serializer { // todo implements Serializer { 
         }
     }
 
-
+    //------______ Number methods _______-------
 
     public int numberOfScooters(){
         if (vehicles.isEmpty()){
@@ -212,11 +253,36 @@ public class VehicleAPI implements Serializer { // todo implements Serializer { 
             return numberOfScooters;
         }
     }
+    public int numberOfElectricCars(){
+        if (vehicles.isEmpty()){
+            return 0;
+        }
+        else {
+            int numberOfElectricCars = 0;
+            for (Vehicle vehicle : vehicles) {
+                if (vehicle instanceof ElectricCar) {
+                    numberOfElectricCars ++;
+                }
+            }
+            return numberOfElectricCars;
+        }
+    }
+    public int numberOfCarbonCars(){
+        if (vehicles.isEmpty()){
+            return 0;
+        }
+        else {
+            int numberOfCarbonCars = 0;
+            for (Vehicle vehicle : vehicles) {
+                if (vehicle instanceof CarbonFuelCar) {
+                    numberOfCarbonCars ++;
+                }
+            }
+            return numberOfCarbonCars;
+        }
+    }
 
 
-
-
-    //------______ listAll methods _______-------
 
 
 

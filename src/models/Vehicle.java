@@ -1,6 +1,7 @@
 package models;
 
 import utils.Utilities;
+import utils.VehicleTaxUtility;
 
 import java.util.Objects;
 
@@ -11,13 +12,25 @@ public abstract class Vehicle {
     private float cost = 1000;
     private String regNumber = "No reg";
     private String model = "No model";
+    private String vehicleTax = "low";
 
-    public Vehicle(Manufacturer manufacturer, int year, float cost, String regNumber, String model) {
+    public Vehicle(Manufacturer manufacturer, int year, float cost, String regNumber, String model, String vehicleTax) {
         this.manufacturer = manufacturer;
         this.year = year;
         this.cost = cost;
         this.regNumber = regNumber;
         this.model = model;
+        this.vehicleTax = vehicleTax;
+    }
+
+    public String getVehicleTax() {
+        return vehicleTax;
+    }
+
+    public void setVehicleTax(String vehicleTax) {
+        if (VehicleTaxUtility.validVehicleTax(vehicleTax)) {
+            this.vehicleTax = vehicleTax;
+        }
     }
 
     public Manufacturer getManufacturer() {
@@ -78,12 +91,12 @@ public abstract class Vehicle {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Vehicle vehicle)) return false;
-        return getYear() == vehicle.getYear() && Float.compare(vehicle.getCost(), getCost()) == 0 && Objects.equals(getManufacturer(), vehicle.getManufacturer()) && Objects.equals(getRegNumber(), vehicle.getRegNumber()) && Objects.equals(getModel(), vehicle.getModel());
+        return getYear() == vehicle.getYear() && Float.compare(vehicle.getCost(), getCost()) == 0 && Objects.equals(getManufacturer(), vehicle.getManufacturer()) && Objects.equals(getRegNumber(), vehicle.getRegNumber()) && Objects.equals(getModel(), vehicle.getModel()) && Objects.equals(getVehicleTax(), vehicle.getVehicleTax());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getManufacturer(), getYear(), getCost(), getRegNumber(), getModel());
+        return Objects.hash(getManufacturer(), getYear(), getCost(), getRegNumber(), getModel(), getVehicleTax());
     }
 
     @Override
@@ -98,6 +111,6 @@ public abstract class Vehicle {
         else {
             newStr = this.getAge() + "years old";
         }
-        return "Vehicle{ model='" + this.model + "', regNumber='" + this.regNumber + "', age='" + newStr + "', cost='" + this.cost + ", manufacturer=" + this.manufacturer + "}";
+        return "Vehicle{ model='" + this.model + "', regNumber='" + this.regNumber + "', age='" + newStr + "', cost='" + this.cost + ", manufacturer=" + this.manufacturer + "', vehicleTax '" + this.vehicleTax + "}";
     }
 }

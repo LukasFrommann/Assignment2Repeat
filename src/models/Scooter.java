@@ -9,8 +9,8 @@ public abstract class Scooter extends Vehicle {
     private int topRiderWeight = 100;
     private float weight = 5;
 
-    public Scooter(Manufacturer manufacturer, int year, float cost, String regNumber, String model, int power, int topRiderWeight, float weight) {
-        super(manufacturer, year, cost, regNumber, model);
+    public Scooter(Manufacturer manufacturer, int year, float cost, String regNumber, String model, String vehicleTax, int power, int topRiderWeight, float weight) {
+        super(manufacturer, year, cost, regNumber, model, vehicleTax);
         this.power = power;
         this.topRiderWeight = topRiderWeight;
         this.weight = weight;

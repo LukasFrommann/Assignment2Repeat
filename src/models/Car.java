@@ -9,8 +9,8 @@ public abstract class Car extends Vehicle {
     private float torque = 100;
     private int topSpeed = 50;
 
-    public Car(Manufacturer manufacturer, int year, float cost, String regNumber, String model, int secs0To60, int power, float torque, int topSpeed) {
-        super(manufacturer, year, cost, regNumber, model);
+    public Car(Manufacturer manufacturer, String vehicleTax, int year, float cost, String regNumber, String model, int secs0To60, int power, float torque, int topSpeed) {
+        super(manufacturer, year, cost, regNumber, model, vehicleTax);
         this.secs0To60 = secs0To60;
         this.power = power;
         this.torque = torque;
