@@ -5,6 +5,13 @@ import utils.VehicleTaxUtility;
 
 import java.util.Objects;
 
+/**
+ * The vehicle class contains all the fields, constructor, setters and getters and to string.
+ * It's an abstract class
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
 public abstract class Vehicle {
 
     private Manufacturer manufacturer;

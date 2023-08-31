@@ -4,6 +4,13 @@ import utils.Utilities;
 
 import java.util.Objects;
 
+/**
+ * The electric car class contains all the fields, constructor, setters and getters and to string.
+ * It extends car
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
 public class ElectricCar extends Car {
     private int range = 100;
     private float engineKWatts = 40;
@@ -52,5 +59,13 @@ public class ElectricCar extends Car {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getRange(), getEngineKWatts());
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricCar{" +
+                "range=" + range +
+                ", engineKWatts=" + engineKWatts +
+                '}';
     }
 }

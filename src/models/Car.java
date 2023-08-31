@@ -3,6 +3,16 @@ package models;
 import jdk.jshell.execution.Util;
 import utils.Utilities;
 
+import java.util.Objects;
+
+/**
+ * The car class contains all the fields, constructor, setters and getters and to string.
+ * It's an abstract class and extends vehicle
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
+
 public abstract class Car extends Vehicle {
     private int secs0To60 = 4;
     private int power = 120;
@@ -60,5 +70,26 @@ public abstract class Car extends Vehicle {
     @Override
     public abstract double getCarbonFootPrint();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car car)) return false;
+        if (!super.equals(o)) return false;
+        return getSecs0To60() == car.getSecs0To60() && getPower() == car.getPower() && Float.compare(car.getTorque(), getTorque()) == 0 && getTopSpeed() == car.getTopSpeed();
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getSecs0To60(), getPower(), getTorque(), getTopSpeed());
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "secs0To60=" + secs0To60 +
+                ", power=" + power +
+                ", torque=" + torque +
+                ", topSpeed=" + topSpeed +
+                '}';
+    }
 }

@@ -1,9 +1,7 @@
 package controllers;
 
 import models.*;
-import utils.FuelTypeUtility;
 import utils.Serializer;
-import utils.Utilities;
 
 import java.io.*;
 import java.util.*;
@@ -11,6 +9,12 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
+/**
+ * The vehicle api class includes most of the methods outlined in the brief
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
 
 public class VehicleAPI implements Serializer { // todo implements Serializer {   (when load and saved written, include the 'implements Serializer here)
 
@@ -20,7 +24,7 @@ public class VehicleAPI implements Serializer { // todo implements Serializer { 
 
     //TODO refer to the spec and add in the required methods here (make note of which methods are given to you first!)
 
-    public VehicleAPI() {
+    public VehicleAPI(File file) {
         vehicles = new ArrayList<Vehicle>();
     }
 

@@ -4,6 +4,14 @@ import utils.Utilities;
 
 import java.util.Objects;
 
+/**
+ * The manufacturer class contains all the fields, constructor, setters and getters and to string.
+ * It includes all that was in the repeat assignment brief.
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
+
 public class Manufacturer {
     private String manufacturerName = ""; // max 20 chars
     private int numEmployees = 1;   // >= 1, default 1
@@ -15,10 +23,10 @@ public class Manufacturer {
     public Manufacturer(String manufacturerName, int numEmployees, String manufacturerPhoneNumber, String manufacturerCountry, double developerLatitude, double developerLongitude) {
         this.manufacturerName = Utilities.truncateString(manufacturerName, 20);
         setNumEmployees(numEmployees);
-        this.manufacturerPhoneNumber = manufacturerPhoneNumber;
-        this.manufacturerCountry = manufacturerCountry;
-        this.developerLatitude = developerLatitude;
-        this.developerLongitude = developerLongitude;
+        this.manufacturerPhoneNumber = this.manufacturerPhoneNumber;
+        this.manufacturerCountry = this.manufacturerCountry;
+        this.developerLatitude = this.developerLatitude;
+        this.developerLongitude = this.developerLongitude;
     }
 
 

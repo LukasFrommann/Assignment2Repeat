@@ -11,6 +11,12 @@ import models.*;
 import utils.Serializer;
 
 import static utils.Utilities.isValidIndex;
+/**
+ * This class includes all of what was needed in reference to the Assignment repeat brief.
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
 //todo include Manufacturer API into starter code
 public class ManufacturerAPI  implements Serializer {
 
@@ -81,13 +87,13 @@ public class ManufacturerAPI  implements Serializer {
         else return "There are no manufacturers in the list.";
     }
     // new added list method for part D
-    public String listAllVehiclesManufacturerByCountry(String manuByName) {
+    public String listAllVehiclesManufacturerByCountry(String manuByCountry) {
         if (manufacturers.isEmpty()) {
             return "There is no record of any manufacturers.";
         } else {
             String listAllVehiclesManufacturerByCountry = "";
             for (Manufacturer manufacturer : manufacturers) {
-                if (manufacturer.equals(manuByName))
+                if (manufacturer.equals(manuByCountry))
                     listAllVehiclesManufacturerByCountry += manufacturers.indexOf(manufacturer) + ": " + manufacturer + "\n";
             }
             if (listAllVehiclesManufacturerByCountry.isEmpty()) {

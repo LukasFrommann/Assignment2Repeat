@@ -4,6 +4,13 @@ import utils.Utilities;
 
 import java.util.Objects;
 
+/**
+ * The scooter class contains all the fields, constructor, setters and getters and to string.
+ * It's an abstract class and extends vehicle
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
 public abstract class Scooter extends Vehicle {
     private int power = 250;
     private int topRiderWeight = 100;
@@ -66,6 +73,13 @@ public abstract class Scooter extends Vehicle {
         return Objects.hash(super.hashCode(), getPower(), getTopRiderWeight(), getWeight());
     }
 
-
+    @Override
+    public String toString() {
+        return "Scooter{" +
+                "power=" + power +
+                ", topRiderWeight=" + topRiderWeight +
+                ", weight=" + weight +
+                '}';
+    }
 }
 

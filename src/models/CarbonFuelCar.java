@@ -6,6 +6,14 @@ import utils.Utilities;
 
 import java.util.Objects;
 
+/**
+ * The carbon fuel car class contains all the fields, constructor, setters and getters and to string.
+ * It extends car
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
+
 public class CarbonFuelCar extends Car {
     private float fuelConsumption = 5;
     private float carbonEmission = 1;
@@ -88,5 +96,16 @@ public class CarbonFuelCar extends Car {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getFuelConsumption(), getCarbonEmission(), isAutomatic(), getFuelType(), getEngineSize());
+    }
+
+    @Override
+    public String toString() {
+        return "CarbonFuelCar{" +
+                "fuelConsumption=" + fuelConsumption +
+                ", carbonEmission=" + carbonEmission +
+                ", automatic=" + automatic +
+                ", fuelType='" + fuelType + '\'' +
+                ", engineSize=" + engineSize +
+                '}';
     }
 }

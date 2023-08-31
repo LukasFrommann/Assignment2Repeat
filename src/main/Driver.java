@@ -7,6 +7,12 @@ import utils.ScannerInput;
 
 import java.io.File;
 
+/**
+ * The Driver Class has got a couple things, however is still missing a bit
+ *
+ * @author Lukas frommann
+ * @version 2.0 (repeat)
+ */
 public class Driver {
 
 
@@ -20,7 +26,7 @@ public class Driver {
 
         public void start() {
 
-//            vehicleAPI = new VehicleAPI(new File("vehicles.xml"));   //todo - write constructor for VehicleAPi
+            vehicleAPI = new VehicleAPI(new File("vehicles.xml"));   //todo - write constructor for VehicleAPi
             manufacturerAPI = new ManufacturerAPI(new File("manufacturers.xml"));
 
             loadAllData();  //load all data once the serializers are set up
@@ -51,8 +57,8 @@ public class Driver {
             while (option != 0) {
                 switch (option) {
                     case 1-> runManufacturerMenu();
-                   // case 2 -> TODO run the Vehicle Store Menu and the associated methods (your design here)
-                   // case 3 -> TODO run the Reports Menu and the associated methods (your design here)
+                    //case 2 -> vehicleMenu();
+                    case 3 -> vehicleReportsMenu();
                     //case 4 -> TODO run the search Manufacturers menu and associated methods (your design here)
                    // case 5 ->TODO run the search Vehicles menu and associated methods (your design here)
                     // case 6 ->TODO sorting menu and associated (your design here)
@@ -82,7 +88,8 @@ public class Driver {
                |  2) Delete a manufacturer        |
                |  3) Update manufacturer details  |
                |  4) List all manufacturers       |
-               |  5) Find a manufacturer          |
+               |  5) List all country origin      |
+               |  6) Find a manufacturer          |
                |  0) Return to main menu          |
                 ----------------------------------""");
             return ScannerInput.readNextInt("==>>");
@@ -98,6 +105,7 @@ public class Driver {
                     case 4 -> System.out.println(manufacturerAPI.listManufacturers());
                     case 5-> findManufacturer();
                     case 6-> listVehiclesByManufacturerName();
+                    case 7-> listAllVehiclesManufacturerByCountry();
                     default->  System.out.println("Invalid option entered" + option);
                 }
                 ScannerInput.readNextLine("\n Press the enter key to continue");
@@ -108,8 +116,12 @@ public class Driver {
         private void addManufacturer() {
             String manufacturerName = ScannerInput.readNextLine("Please enter the manufacturer name: ");
             int manufacturerNumEmployees = ScannerInput.readNextInt("Please enter the number of employees: ");
+            String manufacturerPhoneNumber = ScannerInput.readNextLine("Please enter the manufacturer's phone number: ");
+            String manufacturerCountry = ScannerInput.readNextLine("Please enter the manufacturer's country of origin: ");
+            double developerLatitude = ScannerInput.readNextDouble("Please enter the developer's Latitude: ");
+            double developerLongitude = ScannerInput.readNextDouble("Please enter the developer's Longitude: ");
 
-            if (manufacturerAPI.addManufacturer(new Manufacturer(manufacturerName, manufacturerNumEmployees))){
+            if (manufacturerAPI.addManufacturer(new Manufacturer(manufacturerName, manufacturerNumEmployees, manufacturerPhoneNumber, manufacturerCountry, developerLatitude, developerLongitude))){
                 System.out.println("Add successful");
             }
             else{
@@ -156,6 +168,12 @@ public class Driver {
             System.out.println(manufacturerAPI.listAllVehiclesByManufacturerName(manufacturer));
         }
 
+        private void listAllVehiclesManufacturerByCountry(){
+            String manufacturer = ScannerInput.readNextLine("Enter the manufacturer's country:  ");
+
+            System.out.println(manufacturerAPI.listAllVehiclesManufacturerByCountry(manufacturer));
+        }
+
 
         //---------------------
         //  App Store Menu
@@ -170,49 +188,49 @@ public class Driver {
         2) Electric Car
         3) Scooter """);
 
-//            Manufacturer manufacturer = getManufacturerByName();
-//            if (manufacturer != null){
-//                String regNumber = ScannerInput.readNextLine("Please enter Reg number of new Vehicle: ");
-//
-//
-//                if (vehicleAPI.isValidNewRegNumber(regNumber)){
-//                    String  model = ScannerInput.readNextLine("\tmodel : ");
-//                    float cost = ScannerInput.readNextFloat("\tcost : ");
-//                    int  year = ScannerInput.readNextInt("\tYear of registration");
-//                    switch (vehicleType) {
-//                        case 1, 2 -> {
-//                            int power = ScannerInput.readNextInt("\tpower : ");
-//                            int    secs0To60 = ScannerInput.readNextInt("\ttime from 0 to 60 :  ");
-//                            int  topSpeed = ScannerInput.readNextInt("\ttop speed : ");
-//                            float torque = ScannerInput.readNextFloat("\tpower: ");
-//                            switch (vehicleType) {
-//                                case 1-> {
-//                                    //TODO Carbon Fuel Car -
-//                                   }
-//                                case 2 -> {
-//                                    //TODO Electric Car   -
-//                                 }
-//                            }
-//                        }
-//                        case 3 -> {
-//                            //Scooter
-//
-//                            int power = ScannerInput.readNextInt("\tpower : ");
-//                            float weight = ScannerInput.readNextFloat("\tweight : ");
-//                            int topRiderWeight = ScannerInput.readNextInt("\ttop rider weight");
-//          // todo - write addVehicle(.)                  vehicleAPI.addVehicle(new Scooter(regNumber, model, cost, manufacturer, year, power, weight,topRiderWeight));
-//
-//                        }
-//                    }
-//            }
-//                else{
-//                    System.out.println("Vehicle reg number  already exists.");
-//                }
-//            }
-//
-//            else{
-//                System.out.println("Manufacturer name is NOT valid");
-//            }
+            Manufacturer manufacturer = getManufacturerByName();
+            if (manufacturer != null){
+                String regNumber = ScannerInput.readNextLine("Please enter Reg number of new Vehicle: ");
+
+
+                if (vehicleAPI.isValidNewRegNumber(regNumber)){
+                    String  model = ScannerInput.readNextLine("\tmodel : ");
+                    float cost = ScannerInput.readNextFloat("\tcost : ");
+                    int  year = ScannerInput.readNextInt("\tYear of registration");
+                    switch (vehicleType) {
+                        case 1, 2 -> {
+                            int power = ScannerInput.readNextInt("\tpower : ");
+                            int    secs0To60 = ScannerInput.readNextInt("\ttime from 0 to 60 :  ");
+                            int  topSpeed = ScannerInput.readNextInt("\ttop speed : ");
+                            float torque = ScannerInput.readNextFloat("\tpower: ");
+                            switch (vehicleType) {
+                                case 1-> {
+                                    //TODO Carbon Fuel Car -
+                                   }
+                                case 2 -> {
+                                    //TODO Electric Car   -
+                                 }
+                            }
+                        }
+                        case 3 -> {
+                            //Scooter
+
+                            int power = ScannerInput.readNextInt("\tpower : ");
+                            float weight = ScannerInput.readNextFloat("\tweight : ");
+                            int topRiderWeight = ScannerInput.readNextInt("\ttop rider weight");
+          // todo - write addVehicle(.)                  vehicleAPI.addVehicle(new Scooter(regNumber, model, cost, manufacturer, year, power, weight,topRiderWeight));
+
+                        }
+                    }
+            }
+                else{
+                    System.out.println("Vehicle reg number  already exists.");
+                }
+            }
+
+            else{
+                System.out.println("Manufacturer name is NOT valid");
+            }
      }
 
         private void deleteApp(){
@@ -251,7 +269,7 @@ public class Driver {
         while (option != 0) {
             switch (option) {
                 case 1-> System.out.println(manufacturerAPI.listManufacturers());
-  //              case 2-> listAllVehiclesFromaGivenManufacturer();   todo write listAllVehiclesFromaGivenManufacturer
+                case 2-> listAllVehiclesFromaGivenManufacturer();
                 case 3-> System.out.println("todo");
                 default->  System.out.println("Invalid option entered" + option);
             }
@@ -261,14 +279,14 @@ public class Driver {
     }
 
 
-//    public void listAllVehiclesFromaGivenManufacturer() {
-//        String manu  = ScannerInput.readNextLine("What manufacturer you want a list of cars for?  : ");
-//        Manufacturer m = manufacturerAPI.getManufacturerByName(manu);
-//        if (!(m == null))
-//        System.out.println(vehicleAPI.listAllVehicleByChosenManufacturer(m));     todo write listAllVehicleByChosenManufacturer()
-//        else
-//            System.out.println("No manufacturer with tha name exists");
-//    }
+    public void listAllVehiclesFromaGivenManufacturer() {
+        String manu  = ScannerInput.readNextLine("What manufacturer you want a list of cars for?  : ");
+        Manufacturer m = manufacturerAPI.getManufacturerByName(manu);
+        if (!(m == null))
+        System.out.println(vehicleAPI.listAllVehiclesByChosenManufacturer(m));
+        else
+            System.out.println("No manufacturer with tha name exists");
+    }
 
 
     //--------------------------------------------------
@@ -276,24 +294,35 @@ public class Driver {
     //--------------------------------------------------
 
     private void saveAllData() {
+                try {
+                    this.vehicleAPI.save();
+                    this.manufacturerAPI.save();
+                } catch (Exception e){
+                    System.err.println("Error writing to file: " + e);
+                }
         // TODO try-catch to save the developers to XML file
         // TODO try-catch to save the apps in the store to XML file
     }
 
     private void loadAllData() {
+            try {
+                this.vehicleAPI.load();
+                this.manufacturerAPI.load();
+            } catch (Exception e){
+                System.err.println("Error reading from file: " + e);
+            }
         // TODO try-catch to load the developers from XML file
         // TODO try-catch to load the apps in the store from XML file
     }
-
-//    private String getValidRegNumber(){
-//            String vehicleRegNumber = ScannerInput.readNextLine("\tVehicle Reg Number (must be unique): ");
-//            if (vehicleAPI.isValidNewRegNumber(vehicleRegNumber)) {
-//                return vehicleRegNumber;
-//            } else {
-//                System.err.println("\tApp name already exists / is not valid.");
-//                return "";
-//            }
-//        }
+        private String searchByRegNumber(){
+            String vehicleRegNumber = ScannerInput.readNextLine("\tVehicle Reg Number (must be unique): ");
+            if (vehicleAPI.searchByRegNumber(vehicleRegNumber)) {
+                return vehicleRegNumber;
+            } else {
+                System.err.println("\tApp name already exists / is not valid.");
+                return "";
+            }
+        }
 
         private Manufacturer getManufacturerByName(){
             String manufacturerName = ScannerInput.readNextLine("Please enter the manufacturer's name: ");
