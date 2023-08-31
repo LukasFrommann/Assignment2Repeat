@@ -18,8 +18,9 @@ public class Manufacturer {
     }
 
     public void setManufacturerName(String manufacturerName) {
-        if (Utilities.validStringlength(manufacturerName, 20))
-        this.manufacturerName = manufacturerName;
+        if (Utilities.validStringlength(manufacturerName, 20)) {
+            this.manufacturerName = manufacturerName;
+        }
     }
 
     public int getNumEmployees() {
