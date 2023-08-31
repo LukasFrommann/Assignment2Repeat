@@ -44,6 +44,7 @@ public class VehicleAPI implements Serializer { // todo implements Serializer { 
             foundVehicle.setModel(updatedDetails.getModel());
             foundVehicle.setManufacturer(updatedDetails.getManufacturer());
             foundVehicle.setYear(updatedDetails.getYear());
+            foundVehicle.setVehicleTax(updatedDetails.getVehicleTax());
             ((ElectricCar)foundVehicle).setPower(updatedDetails.getPower());
             ((ElectricCar)foundVehicle).setSecs0To60(updatedDetails.getSecs0To60());
             ((ElectricCar)foundVehicle).setTopSpeed(updatedDetails.getTopSpeed());
@@ -63,6 +64,7 @@ public class VehicleAPI implements Serializer { // todo implements Serializer { 
             foundVehicle.setModel(updatedDetails.getModel());
             foundVehicle.setManufacturer(updatedDetails.getManufacturer());
             foundVehicle.setYear(updatedDetails.getYear());
+            foundVehicle.setVehicleTax(updatedDetails.getVehicleTax());
             ((CarbonFuelCar)foundVehicle).setPower(updatedDetails.getPower());
             ((CarbonFuelCar)foundVehicle).setSecs0To60(updatedDetails.getSecs0To60());
             ((CarbonFuelCar)foundVehicle).setTopSpeed(updatedDetails.getTopSpeed());
@@ -82,6 +84,7 @@ public class VehicleAPI implements Serializer { // todo implements Serializer { 
         if (foundVehicle instanceof Scooter) {
             foundVehicle.setCost(updatedDetails.getCost());
             foundVehicle.setModel(updatedDetails.getModel());
+            foundVehicle.setVehicleTax(updatedDetails.getVehicleTax());
             foundVehicle.setManufacturer(updatedDetails.getManufacturer());
             foundVehicle.setYear(updatedDetails.getYear());
             ((Scooter)foundVehicle).setPower(updatedDetails.getPower());

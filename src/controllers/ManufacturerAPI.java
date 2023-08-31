@@ -80,6 +80,24 @@ public class ManufacturerAPI  implements Serializer {
         }
         else return "There are no manufacturers in the list.";
     }
+    // new added list method for part D
+    public String listAllVehiclesManufacturerByCountry(String manuByName) {
+        if (manufacturers.isEmpty()) {
+            return "There is no record of any manufacturers.";
+        } else {
+            String listAllVehiclesManufacturerByCountry = "";
+            for (Manufacturer manufacturer : manufacturers) {
+                if (manufacturer.equals(manuByName))
+                    listAllVehiclesManufacturerByCountry += manufacturers.indexOf(manufacturer) + ": " + manufacturer + "\n";
+            }
+            if (listAllVehiclesManufacturerByCountry.isEmpty()) {
+                return "There is no record of any manufacturers country origin.";
+            }else {
+                return listAllVehiclesManufacturerByCountry;
+            }
+        }
+    }
+
     //---------------------
     // Update methods
     //---------------------
